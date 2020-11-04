@@ -4,7 +4,6 @@ package com.javarush.task.task19.task1920;
 Самый богатый
 */
 
-import javafx.print.Collation;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

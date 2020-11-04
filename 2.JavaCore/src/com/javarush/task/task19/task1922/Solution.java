@@ -18,42 +18,31 @@ public class Solution {
         words.add("В");
     }
 
-    public static boolean wordExam(String sWord, char[] str) {
-        char[] word = sWord.toCharArray();
-        boolean bWord = false;
-        for (int i = 0; i < str.length; i++) {
-            if (str[i] == word[0]) {
-                int numb = 0;
-                for (int j = 0; j < word.length; j++) {
-                    if (i + numb < str.length) {
-                        if (str[i + numb] != word[j])
-                            bWord = false;
-                        break;
-                    }
-                    numb++;
-                    bWord = true;
-                }
-                if(bWord) break;
-            }
+    public static boolean wordExam(String sWord, String str) {
+        String[] strArray = str.split(" ");
+        for (String temp: strArray) {
+           if(temp.equals(sWord)) {
+               return true;
+           }
         }
-        return bWord;
+        return false;
     }
 
     public static void main(String[] args) throws IOException {
         BufferedReader nameReader = new BufferedReader(new InputStreamReader(System.in));
         String name = nameReader.readLine();
+        nameReader.close();
         BufferedReader scan = new BufferedReader(new FileReader(name));
         while (scan.ready()) {
             int score = 0;
             String str = scan.readLine();
-            char array[] = str.toCharArray();
-            if (wordExam(words.get(0), array)) score++;
-            if (wordExam(words.get(1), array)) score++;
-            if (wordExam(words.get(2), array)) score++;
-            if (score == 2) { for (char c : array) System.out.println(c);
+            for (String word: words) {
+                if (wordExam(word, str)) score++;
+            }
+            if (score == 2) {
+                System.out.println(str);
             }
         }
-        nameReader.close();
         scan.close();
     }
 }
