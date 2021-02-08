@@ -40425,3 +40425,8 @@ Caused by: java.net.ConnectException: Время ожидания соедине
 2021-02-08 12:32:35 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
 2021-02-08 12:33:35 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
 2021-02-08 12:34:35 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
+2021-02-08 12:35:35 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
+2021-02-08 12:36:36 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
+2021-02-08 12:37:35 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
+2021-02-08 12:38:35 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
+2021-02-08 12:39:35 INFO  ApacheHttpClient.sendEvent(535) - responseCode = 200
