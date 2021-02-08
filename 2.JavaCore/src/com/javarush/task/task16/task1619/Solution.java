@@ -4,8 +4,6 @@ package com.javarush.task.task16.task1619;
 А без interrupt слабо?
 */
 
-import jdk.nashorn.internal.runtime.regexp.joni.exception.InternalException;
-
 public class Solution {
     public static boolean isCansel = true;
     public static void main(String[] args) throws InterruptedException {
