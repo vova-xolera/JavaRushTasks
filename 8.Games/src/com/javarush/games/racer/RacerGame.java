@@ -66,12 +66,19 @@ public class RacerGame extends Game {
 
         @Override
         public void onKeyPress(Key key) {
-
                 if (key.equals(Key.RIGHT)) {
                         player.setDirection(Direction.RIGHT);
                 }
                 else if (key.equals(Key.LEFT)) {
                         player.setDirection(Direction.LEFT);
                 }
+        }
+
+        @Override
+        public void onKeyReleased(Key key) {
+                if ((key.equals(Key.RIGHT) && player.getDirection().equals(Direction.RIGHT)) || (key.equals(Key.LEFT) && player.getDirection().equals(Direction.LEFT))) {
+                        player.setDirection(Direction.NONE);
+                }
+
         }
 }
