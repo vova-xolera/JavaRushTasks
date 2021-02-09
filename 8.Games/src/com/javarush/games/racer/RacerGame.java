@@ -59,11 +59,13 @@ public class RacerGame extends Game {
         private void moveAll() {
                 roadMarking.move(player.speed);
                 player.move();
+                roadManager.move(player.speed);
         }
 
         @Override
         public void onTurn(int x) {
                 moveAll();
+                roadManager.generateNewRoadObjects(this);
                 drawScene();
                 setTurnTimer(40);
         }

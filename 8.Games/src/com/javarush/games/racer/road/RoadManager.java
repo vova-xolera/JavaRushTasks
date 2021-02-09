@@ -1,6 +1,7 @@
 package com.javarush.games.racer.road;
 
 import com.javarush.engine.cell.Game;
+import com.javarush.games.racer.GameObject;
 import com.javarush.games.racer.RacerGame;
 
 import java.util.ArrayList;
@@ -28,6 +29,26 @@ public class RoadManager {
         if (newObject != null) {
             items.add(newObject);
         }
+    }
+
+    private boolean isThornExists() {
+        for (RoadObject item : items) {
+            if (item.type.equals(RoadObjectType.THORN)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void generateThorn(Game game) {
+        int number = game.getRandomNumber(100);
+        if (number < 10 && !isThornExists()) {
+            addRoadObject(RoadObjectType.THORN, game);
+        }
+    }
+
+    public void generateNewRoadObjects(Game game) {
+        generateThorn(game);
     }
 
     public void draw(Game game) {
