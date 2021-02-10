@@ -15,8 +15,13 @@ public class RacerGame extends Game {
         private FinishLine finishLine;
         private ProgressBar progressBar;
         private boolean isGameStopped;
+        private int score;
 
 
+        @Override
+        public void setScore(int score) {
+                this.score = score;
+        }
 
         @Override
         public void initialize() {
@@ -26,6 +31,7 @@ public class RacerGame extends Game {
         }
 
         private void createGame() {
+                score = 3500;
                 roadMarking = new RoadMarking();
                 player = new PlayerCar();
                 roadManager = new RoadManager();
@@ -91,6 +97,8 @@ public class RacerGame extends Game {
                         else {
                                 moveAll();
                                 roadManager.generateNewRoadObjects(this);
+                                score -= 5;
+                                setScore(score);
                                 drawScene();
                                 setTurnTimer(40);
                         }
