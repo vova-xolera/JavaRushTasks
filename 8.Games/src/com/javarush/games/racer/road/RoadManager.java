@@ -1,7 +1,6 @@
 package com.javarush.games.racer.road;
 
 import com.javarush.engine.cell.Game;
-import com.javarush.games.racer.GameObject;
 import com.javarush.games.racer.PlayerCar;
 import com.javarush.games.racer.RacerGame;
 
@@ -19,7 +18,7 @@ public class RoadManager {
         if (type == RoadObjectType.THORN) {
             return new Thorn(x, y);
         } else {
-            return null;
+            return new Car(RoadObjectType.CAR, x, y);
         }
     }
     private void addRoadObject(RoadObjectType type, Game game) {
@@ -49,6 +48,15 @@ public class RoadManager {
 
     public void generateNewRoadObjects(Game game) {
         generateThorn(game);
+        generateRegularCar(game);
+    }
+
+    private void generateRegularCar(Game game) {
+        int num = game.getRandomNumber(100);
+        int carTypeNumber = game.getRandomNumber(4);
+        if (num < 30) {
+            addRoadObject(RoadObjectType.values()[carTypeNumber], game);
+        }
     }
 
     public void draw(Game game) {
