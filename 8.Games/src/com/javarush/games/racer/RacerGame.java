@@ -84,10 +84,16 @@ public class RacerGame extends Game {
                         if (roadManager.getPassedCarsCount() >= RACE_GOAL_CARS_COUNT) {
                                 finishLine.show();
                         }
-                        moveAll();
-                        roadManager.generateNewRoadObjects(this);
-                        drawScene();
-                        setTurnTimer(40);
+                        if (finishLine.isCrossed(player)) {
+                                win();
+                                drawScene();
+                        }
+                        else {
+                                moveAll();
+                                roadManager.generateNewRoadObjects(this);
+                                drawScene();
+                                setTurnTimer(40);
+                        }
                 }
         }
 
@@ -116,6 +122,12 @@ public class RacerGame extends Game {
                         player.speed = 1;
                 }
 
+        }
+
+        private void win() {
+                isGameStopped = true;
+                showMessageDialog(Color.WHITE,"CONGRADS!!", Color.GREEN,40);
+                stopTurnTimer();
         }
 
         private void gameOver() {
