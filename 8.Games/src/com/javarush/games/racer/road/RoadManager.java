@@ -12,13 +12,12 @@ public class RoadManager {
     public static final int RIGHT_BORDER = RacerGame.WIDTH - RacerGame.ROADSIDE_WIDTH;
     private static final int FIRST_LANE_POSITION = 16;
     private static final int FOURTH_LANE_POSITION = 44;
-    private List<RoadObject> items = new ArrayList();
+    private List<RoadObject> items = new ArrayList<>();
 
     private RoadObject createRoadObject(RoadObjectType type, int x, int y) {
-        if (type.equals(RoadObjectType.THORN)) {
-            return new Thorn(x ,y);
-        }
-        else {
+        if (type == RoadObjectType.THORN) {
+            return new Thorn(x, y);
+        } else {
             return null;
         }
     }
@@ -33,7 +32,7 @@ public class RoadManager {
 
     private boolean isThornExists() {
         for (RoadObject item : items) {
-            if (item.type.equals(RoadObjectType.THORN)) {
+            if (item instanceof Thorn) {
                 return true;
             }
         }
@@ -60,5 +59,10 @@ public class RoadManager {
         for(RoadObject item : items) {
             item.move(boost + item.speed);
         }
+        deletePassedItems();
+    }
+
+    private void deletePassedItems() {
+        items.removeIf(item -> item.y >= RacerGame.HEIGHT);
     }
 }
