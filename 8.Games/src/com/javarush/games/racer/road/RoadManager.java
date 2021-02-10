@@ -13,8 +13,13 @@ public class RoadManager {
     private static final int FIRST_LANE_POSITION = 16;
     private static final int FOURTH_LANE_POSITION = 44;
     private static final int PLAYER_CAR_DISTANCE = 12;
+    private int passedCarsCount = 0;
     private List<RoadObject> items = new ArrayList<>();
 
+
+    public int getPassedCarsCount() {
+        return passedCarsCount;
+    }
 
     private boolean isRoadSpaceFree(RoadObject object) {
         for (RoadObject item : items) {
@@ -102,7 +107,15 @@ public class RoadManager {
     }
 
     private void deletePassedItems() {
-        items.removeIf(item -> item.y >= RacerGame.HEIGHT);
+        for(RoadObject item : new ArrayList<>(items)) {
+            if (item.y >= RacerGame.HEIGHT) {
+                items.remove(item);
+                if (item.type != RoadObjectType.THORN) {
+                    passedCarsCount++;
+                }
+
+            }
+        }
     }
 
     public boolean checkCrush(PlayerCar playerCar) {
