@@ -87,6 +87,12 @@ public class RacerGame extends Game {
                 else if (key.equals(Key.LEFT)) {
                         player.setDirection(Direction.LEFT);
                 }
+                else if (isGameStopped && key.equals(Key.SPACE)) {
+                        createGame();
+                }
+                else if (key.equals(Key.UP)) {
+                        player.speed = 2;
+                }
         }
 
         @Override
@@ -94,12 +100,15 @@ public class RacerGame extends Game {
                 if ((key.equals(Key.RIGHT) && player.getDirection().equals(Direction.RIGHT)) || (key.equals(Key.LEFT) && player.getDirection().equals(Direction.LEFT))) {
                         player.setDirection(Direction.NONE);
                 }
+                else if (key.equals(Key.UP)) {
+                        player.speed = 1;
+                }
 
         }
 
         private void gameOver() {
                 isGameStopped = true;
-                showMessageDialog(Color.WHITE,"GAME OVER", Color.RED,10);
+                showMessageDialog(Color.WHITE,"GAME OVER", Color.RED,40);
                 stopTurnTimer();
                 player.stop();
         }
